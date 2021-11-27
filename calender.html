@@ -1,2588 +1,345 @@
 <!DOCTYPE html>
-<head>
-    <title>Calendar using CSS only</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link rel="stylesheet" href="css/style.css"/>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet"/>
-    <link rel="shortcut icon" type="image/png" href="images/cal_favicon.png">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
-</head>
-<body>
-    <div id="calendar-container">
-            <header>
-                <h3>Calendar for the entire year 2021.</h3>
-            </header>
+<HTML>
+    <HEAD>
+        <TITLE>Calender</TITLE>
+        <STYLE>
+            @import url("https://fonts.googleapis.com/css?family=Nunito&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-        <div class="parallax" data-parallax="scroll" data-image-src="/tree.jpeg" data-z-index="1">
-            <h1>January 2021</h1>
-        </div>
-        <!--January-->
-        <div id="calendar-container">
-            <header>
-                <!-- <h1>January 2021</h1> -->
-            </header>
-            <div id="calendar-wrap">
-                <ul class="weekdays">
-                    <li>Sunday</li>
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                    <li>Saturday</li>
-                </ul>
-                <ul class="days">
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            01
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                New Year's Day
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            02
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            03
-                        </div>
-                    </li>
-                </ul>
+body {
+  font-family: "Nunito", sans-serif;
+}
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            04
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            05
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            06
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            07
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            08
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            09
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            10
-                        </div>
-                    </li>
-                </ul>
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: background-image 0.5s linear;
+}
+.container::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: blur(5px) brightness(80%);
+}
+.container .box {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 450px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6), 0 5px 15px rgba(0, 0, 0, 0.6);
+  border-radius: 25px;
+}
+.container .box .text {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  height: 250px;
+  padding: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  position: relative;
+  transition: background-image 0.5s linear;
+}
+.container .box .text #selections {
+  text-align: center;
+  width: 100%;
+}
+.container .box .text #selections * {
+  margin: 0 5px;
+  padding: 5px 10px;
+}
+.container .box .text #selections #year-input {
+  width: 80px;
+}
+.container .box .text #selections input[type=submit] {
+  border-radius: 10px;
+}
+.container .box .text h2, .container .box .text p {
+  text-shadow: 0 0 9px rgba(0, 0, 0, 0.8);
+}
+.container .box .text h2 {
+  font-size: 1.7em;
+}
+.container .box .text p {
+  margin-top: 5px;
+  font-size: 1.3em;
+  letter-spacing: 2px;
+}
+.container .box .dates {
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  grid-gap: 10px;
+  height: 250px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: #ffffff;
+  color: #000;
+}
+.container .box .dates div:nth-child(7n) {
+  color: red;
+  font-weight: bold;
+}
+.container .box .dates .today {
+  background: #fbff0d;
+  border-radius: 10px;
+  font-weight: bold;
+}
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            11
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            12
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            13
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Lohri
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            14
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Makar sankranti
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            15
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            16
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            17
-                        </div>
-                    </li>
-                </ul>
+@media (max-width: 565px) {
+  .container .box {
+    width: 350px;
+  }
+  .container .box .text {
+    height: 200px;
+  }
+  .container .box .text h2 {
+    margin-top: 10px;
+    font-size: 1.2em;
+  }
+  .container .box .text p {
+    margin-top: 5px;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+  }
+  .container .box .dates {
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 0px;
+  }
+}
+        </STYLE>
+    </HEAD>
+    <BODY>
+        <div class="container">
+            <div class="box">
+                <div class="text">
+                    <form id="selections">
+                        <select id="options-month">
+                            <option disabled selected>Month</option>
+                            <option value="Januray">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                        </select>
+                        <input type="number" name="Year" min="1000" max="3000" id="year-input" placeholder="Year">
+                        <input type="submit" value="Go">
+                    </form> <!-- selections -->
+    
+                    <h2><span class="todaysDay">01</span>, <span class="todaysWeekDay">Monday</span></h2>
+                    <p class="month">December</p>
+                    <p class="year">2010</p>
+                </div> <!-- text -->
+    
+                <div class="dates">
+                    <div class="day">S</div>
+                    <div class="day">M</div>
+                    <div class="day">T</div>
+                    <div class="day">W</div>
+                    <div class="day">T</div>
+                    <div class="day">F</div>
+                    <div class="day">S</div>
+                </div> <!-- dates -->
+            </div> <!-- box -->
+        </div> <!-- container -->
+        <SCRIPT>
+            let date = new Date();
+const todaysDay = date.getDate();
+const todaysMonth = date.getMonth();
+const todaysWeekDay = date.getDay();
+const year = date.getFullYear();
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            18
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            19
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            20
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Guru Gobind Singh Jayanti
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            21
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            22
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            23
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            24
-                        </div>
-                    </li>
-                </ul>
+const weekDays = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday'
+];
+const monthDays = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+]
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            25
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            26
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Republic Day-India
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            27
-                        </div>
-                        
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            28
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            29
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            30
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            31
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+const htmlTodaysDay = document.querySelector('.todaysDay');
+const htmlTodaysWeekDay = document.querySelector('.todaysWeekDay');
+const htmlMonth = document.querySelector('.month');
+const htmlYear = document.querySelector('.year');
+const htmlDatesDiv = document.querySelector('.dates');
+const htmlSelections = document.querySelector('#selections');
 
-        <div class="parallax" data-parallax="scroll" data-image-src="/tree.jpeg" data-z-index="1">
-            <h1>February 2021</h1>
-        </div>
-        <!--February-->
-        <div id="calendar-container">
-            <header>
-                <!-- <h1>February 2021</h1> -->
-            </header>
-            <div id="calendar-wrap">
-                <ul class="weekdays">
-                    <li>Sunday</li>
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                    <li>Saturday</li>
-                </ul>
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            01
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            02
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            03
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            04
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            05
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            06
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            07
-                        </div>
-                    </li>
-                </ul>
+const howManyDaysInMonth = daysInMonth(todaysMonth, year);
+const numWeek = getFirstDayInMonth(todaysMonth, year);
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            08
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            09
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            10
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            11
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            12
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            13
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            14
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            15
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            16
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Vasant panchami
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            17
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            18
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            19
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Shivaji jayanti
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            20
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            21
-                        </div>
-                    </li>
-                </ul>
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            22
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            23
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            24
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            25
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            26
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            27
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            28
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+htmlTodaysDay.innerHTML = todaysDay;
+htmlTodaysWeekDay.innerHTML = weekDays[todaysWeekDay];
+htmlMonth.innerHTML = monthDays[todaysMonth];
+htmlYear.innerHTML = year;
 
-        <div class="parallax" data-parallax="scroll" data-image-src="/tree.jpeg" data-z-index="1">
-            <h1>March 2021</h1>
-        </div>
-        <!--March-->
-        <div id="calendar-container">
-            <header>
-                <!-- <h1>March 2021</h1> -->
-            </header>
-            <div id="calendar-wrap">
-                <ul class="weekdays">
-                    <li>Sunday</li>
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                    <li>Saturday</li>
-                </ul>
-                <ul class="days">
-                    <li class="day other-month">
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            01
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            02
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            03
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            04
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            05
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            06
-                        </div>
-                    </li>
-                </ul>
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            07
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            08
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            09
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            10
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            11
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Mahashivratri
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            12
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            13
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            14
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            15
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            16
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            17
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            18
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            19
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            20
-                        </div>
-                    </li>
-                </ul>
+function daysInMonth(month, year) {
+    return new Date(year, month + 1, 0).getDate();
+}
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            21
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            22
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            23
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            24
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            25
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            26
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            27
-                        </div>
-                    </li>
-                </ul>
+function getFirstDayInMonth(month, year) {
+    return new Date(year, month).getDay();
+}
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            28
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Holika dahan
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            29
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Holi
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            30
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            31
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+function createElement(n, d) {
+    for (let i = 0; i < n; i++) {
+        let div = document.createElement('div');
+        div.className = 'number';
+        div.innerHTML = '';
+        htmlDatesDiv.append(div);
+    }
+    for (let i = 1; i <= d; i++) {
 
-        <div class="parallax" data-parallax="scroll" data-image-src="/tree.jpeg" data-z-index="1">
-            <h1>April 2021</h1>
-        </div>
-        <!--April-->
-        <div id="calendar-container">
-            <header>
-                <!-- <h1>April 2021</h1> -->
-            </header>
-            <div id="calendar-wrap">
-                <ul class="weekdays">
-                    <li>Sunday</li>
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                    <li>Saturday</li>
-                </ul>
-                <ul class="days">
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            01
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            02
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Good Friday
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            03
-                        </div>
-                    </li>
-                </ul>
+        let div = document.createElement('div');
+        div.className = 'number';
+        div.innerHTML = i;
+        htmlDatesDiv.append(div);
+    }
+}
+createElement(numWeek, howManyDaysInMonth);
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            04
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            05
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            06
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            07
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            08
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            09
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            10
-                        </div>
-                    </li>
-                </ul>
+const numbers = Array.from(document.querySelectorAll('.number'));
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            11
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            12
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            13
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            14
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            15
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            16
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            17
-                        </div>
-                    </li>
-                </ul>
+numbers.forEach(function (number) {
+    if (number.innerHTML === todaysDay.toString()) {
+        number.classList.add('today');
+    }
+});
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            18
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            19
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            20
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            21
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Rama navami
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            22
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            23
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            24
-                        </div>
-                    </li>
-                </ul>
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            25
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Mahavir jayanti
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            26
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            27
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            28
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            29
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            30
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+function monthImg(monthImg) {
+    const htmlConteiner = document.querySelector('.container');
+    const htmlText = document.querySelector('.text');
+    switch (monthImg) {
+        case 1:
+            htmlConteiner.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2019/12/15/18/24/winter-4697776_960_720.jpg")';
+            htmlText.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2019/12/15/18/24/winter-4697776_960_720.jpg")';
+            break;
+        case 2:
+            htmlConteiner.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2016/11/12/22/42/santa-claus-1819933_960_720.jpg")';
+            htmlText.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2016/11/12/22/42/santa-claus-1819933_960_720.jpg")';
+            break;
+        case 3:
+            htmlConteiner.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2014/02/27/16/10/spring-276014_960_720.jpg")';
+            htmlText.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2014/02/27/16/10/spring-276014_960_720.jpg")';
+            break;
+        case 4:
+            htmlConteiner.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2014/12/04/14/46/magnolia-trees-556718_960_720.jpg")';
+            htmlText.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2017/05/08/13/15/spring-bird-2295436_960_720.jpg")';
+            break;
+        case 5:
+            htmlConteiner.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2014/12/17/21/30/wild-flowers-571940_960_720.jpg")';
+            htmlText.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2014/12/17/21/30/wild-flowers-571940_960_720.jpg")';
+            break;
+        case 6:
+            htmlConteiner.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2014/12/15/17/16/pier-569314_960_720.jpg")';
+            htmlText.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2014/12/15/17/16/pier-569314_960_720.jpg")';
+            break;
+        case 7:
+            htmlConteiner.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2017/01/20/00/30/maldives-1993704_960_720.jpg")';
+            htmlText.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2017/01/20/00/30/maldives-1993704_960_720.jpg")';
+            break;
+        case 8:
+            htmlConteiner.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2016/08/30/12/13/beach-1630540_960_720.jpg")';
+            htmlText.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2016/08/30/12/13/beach-1630540_960_720.jpg")';
+            break;
+        case 9:
+            htmlConteiner.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2016/09/06/15/16/autumn-1649362_960_720.jpg")';
+            htmlText.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2016/09/06/15/16/autumn-1649362_960_720.jpg")';
+            break;
+        case 10:
+            htmlConteiner.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2015/12/01/20/28/fall-1072821_960_720.jpg")';
+            htmlText.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2015/12/01/20/28/fall-1072821_960_720.jpg")';
+            break;
+        case 11:
+            htmlConteiner.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2019/10/31/06/58/avenue-4591121_960_720.jpg")';
+            htmlText.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2019/10/31/06/58/avenue-4591121_960_720.jpg")';
+            break;
+        case 12:
+            htmlConteiner.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2016/03/09/09/21/snowflake-1245748_960_720.jpg")';
+            htmlText.style.backgroundImage = 'url("https://cdn.pixabay.com/photo/2016/03/09/09/21/snowflake-1245748_960_720.jpg")';
+            break;
+    }
+}
+monthImg(todaysMonth + 1);
 
-        <div class="parallax" data-parallax="scroll" data-image-src="/tree.jpeg" data-z-index="1">
-            <h1>May 2021</h1>
-        </div>
-        <!--May-->
-        <div id="calendar-container">
-            <header>
-                <!-- <h1>May 2021</h1> -->
-            </header>
-            <div id="calendar-wrap">
-                <ul class="weekdays">
-                    <li>Sunday</li>
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                    <li>Saturday</li>
-                </ul>
-                <ul class="days">
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            01
-                        </div>
-                    </li>
-                </ul>
+htmlSelections.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const htmlOptionsMonth = document.querySelector('#options-month');
+    const htmlYearInput = document.querySelector('#year-input');
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            02
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            03
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            04
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            05
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            06
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            07
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            08
-                        </div>
-                    </li>
-                </ul>
+    if (htmlOptionsMonth.value != 'Month' && htmlYearInput.value != '') {
+        date = new Date(`${htmlOptionsMonth.value} ${htmlYearInput.value}`);
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            09
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            10
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            11
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            12
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            13
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            14
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Ramzan Eid
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            15
-                        </div>
-                    </li>
-                </ul>
+        const newYear = parseInt(htmlYearInput.value);
+        const newMonth = monthDays.indexOf(htmlOptionsMonth.value);
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            16
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            17
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            18
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            19
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            20
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            21
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            22
-                        </div>
-                    </li>
-                </ul>
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            23
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            24
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            25
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            26
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Buddha purnima
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            27
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            28
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            29
-                        </div>
-                    </li>
-                </ul>
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            30
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            31
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        const setMonthNum = daysInMonth(newMonth, newYear);
+        const setWeekDay = getFirstDayInMonth(newMonth, newYear);
+        htmlDatesDiv.innerHTML = '';
+        htmlDatesDiv.innerHTML = `
+            <div class="day">S</div>
+            <div class="day">M</div>
+            <div class="day">T</div>
+            <div class="day">W</div>
+            <div class="day">T</div>
+            <div class="day">F</div>
+            <div class="day">S</div>
+        `;
 
-        <div class="parallax" data-parallax="scroll" data-image-src="/tree.jpeg" data-z-index="1">
-            <h1>June 2021</h1>
-        </div>
-        <!--June-->
-        <div id="calendar-container">
-            <header>
-                <!-- <h1>June 2021</h1> -->
-            </header>
-            <div id="calendar-wrap">
-                <ul class="weekdays">
-                    <li>Sunday</li>
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                    <li>Saturday</li>
-                </ul>
-                <ul class="days">
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            01
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            02
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            03
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            04
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            05
-                        </div>
-                    </li>
-                </ul>
+        createElement(setWeekDay, setMonthNum);
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            06
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            07
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            08
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            09
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            10
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            11
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            12
-                        </div>
-                    </li>
-                </ul>
+        monthImg(newMonth + 1);
 
-                <ul class="days">  
-                    <li class="day">
-                        <div class="date">
-                            13
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            14
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            15
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            16
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            17
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            18
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            19
-                        </div>
-                    </li>
-                </ul>
+        document.querySelector('.text h2').style.display = 'none';
+        htmlMonth.innerHTML = monthDays[newMonth];
+        htmlYear.innerHTML = newYear;
 
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            20
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            21
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            22
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            23
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            24
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            25
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            26
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            27
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            28
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            29
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            30
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="parallax" data-parallax="scroll" data-image-src="/tree.jpeg" data-z-index="1">
-            <h1>July 2021</h1>
-        </div>
-        <!--July-->
-        <div id="calendar-container">
-            <header>
-                <!-- <h1>July 2021</h1> -->
-            </header>
-            <div id="calendar-wrap">
-                <ul class="weekdays">
-                    <li>Sunday</li>
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                    <li>Saturday</li>
-                </ul>
-                <ul class="days">
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            01
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            02
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            03
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            04
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            05
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            06
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            07
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            08
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            09
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            10
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            11
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            12
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Rath yatra
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            13
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            14
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            15
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            16
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            17
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            18
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            19
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            20
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            21
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Bakri Eid
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            22
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            23
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            24
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            25
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            26
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            27
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            28
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            29
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            30
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            31
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="parallax" data-parallax="scroll" data-image-src="/tree.jpeg" data-z-index="1">
-            <h1>August 2021</h1>
-        </div>
-        <!--August-->
-        <div id="calendar-container">
-            <header>
-                <!-- <h1>August 2021</h1> -->
-            </header>
-            <div id="calendar-wrap">
-                <ul class="weekdays">
-                    <li>Sunday</li>
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                    <li>Saturday</li>
-                </ul>
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            01
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            02
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            03
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            04
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            05
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            06
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            07
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            08
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            09
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            10
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            11
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            12
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            13
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            14
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            15
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Independence day
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            16
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Parsi new year
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            17
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            18
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            19
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Muharram
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            20
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            21
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            22
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Rakshabandhan
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            23
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            24
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            25
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            26
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            27
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            28
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            29
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            30
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Janmashtami
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            31
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="parallax" data-parallax="scroll" data-image-src="/tree.jpeg" data-z-index="1">
-            <h1>September 2021</h1>
-        </div>
-        <!--September-->
-        <div id="calendar-container">
-            <header>
-                <!-- <h1>September 2021</h1> -->
-            </header>
-            <div id="calendar-wrap">
-                <ul class="weekdays">
-                    <li>Sunday</li>
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                    <li>Saturday</li>
-                </ul>
-                <ul class="days">
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            01
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            02
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            03
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            04
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            05
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            06
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            07
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            08
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            09
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            10
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Ganesh chaturthi
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            11
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            12
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            13
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            14
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            15
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            16
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            17
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            18
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            19
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            20
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            21
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            22
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            23
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            24
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            25
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            26
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            27
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            28
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            29
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            30
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="parallax" data-parallax="scroll" data-image-src="/tree.jpeg" data-z-index="1">
-            <h1>October 2021</h1>
-        </div>
-        <!--October-->
-        <div id="calendar-container">
-            <header>
-                <!-- <h1>October 2021</h1> -->
-            </header>
-            <div id="calendar-wrap">
-                <ul class="weekdays">
-                    <li>Sunday</li>
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                    <li>Saturday</li>
-                </ul>
-                <ul class="days">
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            01
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            02
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Gandhi jayantii
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>                    
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            03
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            04
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            05
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            06
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            07
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            08
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            09
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            10
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            11
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            12
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            13
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            14
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            15
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Dussehra
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            16
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            17
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            18
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            19
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            20
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            21
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            22
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            23
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            24
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            25
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            26
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            27
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            28
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            29
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            30
-                        </div>
-                    </li>
-                </ul>
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            31
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Halloween
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="parallax" data-parallax="scroll" data-image-src="/tree.jpeg" data-z-index="1">
-            <h1>November 2021</h1>
-        </div>
-        <!--November-->
-        <div id="calendar-container">
-            <header>
-                <!-- <h1>November 2021</h1> -->
-            </header>
-            <div id="calendar-wrap">
-                <ul class="weekdays">
-                    <li>Sunday</li>
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                    <li>Saturday</li>
-                </ul>
-                <ul class="days">
-                    <li class="day other-month">
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            01
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            02
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            03
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            04
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Diwali
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            05
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Gowardhan puja
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            06
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Bhai duj
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            07
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            08
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            09
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            10
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Chhat puja
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            11
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            12
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            13
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            14
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            15
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            16
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            17
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            18
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            19
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Gurunanak jayanti
-                            </div>
-                            <div class="event-time">
-                                All day
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            20
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            21
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            22
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            23
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            24
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            25
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            26
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            27
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            28
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            29
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            30
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="parallax" data-parallax="scroll" data-image-src="/tree.jpeg" data-z-index="1">
-            <h1>December 2021</h1>
-        </div>
-        <!--December-->
-        <div id="calendar-container">
-            <header>
-                <!-- <h1>December 2021</h1> -->
-            </header>
-            <div id="calendar-wrap">
-                <ul class="weekdays">
-                    <li>Sunday</li>
-                    <li>Monday</li>
-                    <li>Tuesday</li>
-                    <li>Wednesday</li>
-                    <li>Thursday</li>
-                    <li>Friday</li>
-                    <li>Saturday</li>
-                </ul>
-                <ul class="days">
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day other-month">
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            01
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            02
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            03
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            04
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            05
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            06
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            07
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            08
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            09
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            10
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            11
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            12
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            13
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            14
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            15
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            16
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            17
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            18
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            19
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            20
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            21
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            22
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            23
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            24
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Christmas eve
-                                <div class="event-time">
-                                    All day
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            25
-                        </div>
-                        <div class="event">
-                            <div class="event-desc">
-                                Christmas
-                                <div class="event-time">
-                                    All day
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-
-                <ul class="days">
-                    <li class="day">
-                        <div class="date">
-                            26
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            27
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            28
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            29
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            30
-                        </div>
-                    </li>
-                    <li class="day">
-                        <div class="date">
-                            31
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+    }
+    htmlOptionsMonth.value = 'Month';
+    htmlYearInput.value = '';
+})
+        </SCRIPT>
+    </BODY>
+</HTML>
