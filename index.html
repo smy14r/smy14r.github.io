@@ -1,288 +1,589 @@
 <!DOCTYPE html>
-<html>
-<title>Saumya Shrivastava</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.s1-row-padding img {margin-bottom: 12px}
-/* Set the width of the sidebar to 120px */
-.s1-sidebar {width: 120px;background: #222;}
-/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-#main {margin-left: 120px}
-/* Remove margins from "page content" on small screens */
-@media only screen and (max-width: 600px) {#main {margin-left: 0}}
-</style>
-<body class="s1-black">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Saumya Shrivastava — Software Development Engineer at Adobe Systems. Building enterprise-scale production systems for Creative Cloud. Full-stack, microservices, AI/ML.">
+  <title>Saumya Shrivastava</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,400&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<!-- Icon Bar (Sidebar - hidden on small screens) -->
-<nav class="s1-sidebar s1-bar-block s1-small s1-hide-small s1-center">
-  <a href="#home" class="s1-bar-item s1-button s1-padding-large s1-black">
-    <i class="fa fa-home s1-xxlarge"></i>
-    <p>HOME</p>
-  </a>
-  <a href="#about" class="s1-bar-item s1-button s1-padding-large s1-hover-black">
-    <i class="fa fa-user s1-xxlarge"></i>
-    <p>ABOUT</p>
-  </a>
-  <a href="#project" class="s1-bar-item s1-button s1-padding-large s1-hover-black">
-    <i class="fa fa-eye s1-xxlarge"></i>
-    <p>PROJECTS</p>
-  </a>
-  <a href="#publications" class="s1-bar-item s1-button s1-padding-large s1-hover-black">
-    <i class="fa fa-book s1-xxlarge"></i>
-    <p>PUBLICATIONS</p>
-  </a>
-  <a href="#contact" class="s1-bar-item s1-button s1-padding-large s1-hover-black">
-    <i class="fa fa-envelope s1-xxlarge"></i>
-    <p>CONTACT</p>
-  </a>
-</nav>
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- Navbar on small screens (Hidden on medium and large screens) -->
-<div class="s1-top s1-hide-large s1-hide-medium" id="myNavbar">
-  <div class="s1-bar s1-black s1-opacity s1-hover-opacity-off s1-center s1-small">
-    <a href="#home" class="s1-bar-item s1-button" style="width:20% !important">HOME</a>
-    <a href="#about" class="s1-bar-item s1-button" style="width:20% !important">ABOUT</a>
-    <a href="#project" class="s1-bar-item s1-button" style="width:20% !important">PROJECTS</a>
-    <a href="#publications" class="s1-bar-item s1-button" style="width:20% !important">PUBLICATIONS</a>
-    <a href="#contact" class="s1-bar-item s1-button" style="width:20% !important">CONTACT</a>
-  </div>
-</div>
+  <!-- ── Navigation ── -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">SS</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-<!-- Page Content -->
-<div class="s1-padding-large" id="main">
-  <!-- Header/Home -->
-  <header class="s1-container s1-padding-32 s1-center s1-black" id="home">
-    <h1 class="s1-jumbo"><span class="s1-hide-small">I'm</span> Saumya Shrivastava.</h1>
-    <p>Software Development Engineer @Adobe</p>
-  </header>
-
-  <!-- About Section -->
-  <div class="s1-content s1-justify s1-text-grey s1-padding-64" id="about">
-    <h2 class="s1-text-light-grey">Introduction</h2>
-    <hr style="width:200px" class="s1-opacity">
-    <p>
-        Hello! I'm Saumya Shrivastava, a Software Development Engineer at Adobe Systems, Noida, where I've been building enterprise-scale 
-        production systems since June 2022. I specialize in full-stack development and microservices architecture, working on Adobe Creative 
-        Cloud products that serve millions of users worldwide. I graduated with a Bachelor of Engineering in Computer Science from Chitkara 
-        University, Chandigarh with an outstanding CGPA of 9.83/10. During my academic journey, I participated in the ERASMUS+ semester 
-        exchange program at Algebra University, Zagreb, Croatia, and completed a research internship at National Chung Cheng University, Taiwan, 
-        focusing on AI fairness and explainability. I'm also a published researcher with work in the International Journal of Information 
-        Technology. Beyond coding, I'm an international FIDE-rated chess player and have basic proficiency in Japanese language.
-    </p>
-    <h3 class="s1-padding-16 s1-text-light-grey">My Skills</h3>
-    <p class="s1-wide">Programming Languages (Java, Python)</p>
-    <div class="s1-white">
-      <div class="s1-dark-grey" style="height:28px;width:95%"></div>
+  <!-- ── Hero ── -->
+  <section class="hero" id="home">
+    <div class="hero-mesh">
+      <div class="mesh-1"></div>
+      <div class="mesh-2"></div>
+      <div class="mesh-3"></div>
     </div>
-    <p class="s1-wide">Backend Development (Spring Boot, Microservices, REST APIs)</p>
-    <div class="s1-white">
-      <div class="s1-dark-grey" style="height:28px;width:90%"></div>
-    </div>
-    <p class="s1-wide">Frontend Development (ReactJS, HTML, CSS, JavaScript)</p>
-    <div class="s1-white">
-      <div class="s1-dark-grey" style="height:28px;width:85%"></div>
-    </div>
-    <p class="s1-wide">Databases (SQL Server, MongoDB)</p>
-    <div class="s1-white">
-      <div class="s1-dark-grey" style="height:28px;width:85%"></div>
-    </div>
-    <p class="s1-wide">AI & Machine Learning (Python, Chat-AI, Model Context Protocol)</p>
-    <div class="s1-white">
-      <div class="s1-dark-grey" style="height:28px;width:80%"></div>
-    </div>
-    <p class="s1-wide">DevOps & CI/CD (Jenkins, SonarQube, Git)</p>
-    <div class="s1-white">
-      <div class="s1-dark-grey" style="height:28px;width:85%"></div>
-    </div><br>
-    
-    <div class="s1-row s1-center s1-padding-16 s1-section s1-light-grey">    
-      <div class="s1-quarter s1-section">
-        <span class="s1-xlarge">2022 - Present</span><br>
-        Software Development Engineer at Adobe Systems
+    <div class="hero-body">
+      <p class="eyebrow a1">Software Development Engineer</p>
+      <h1 class="hero-name a2">Saumya<br><span class="name-accent">Shrivastava.</span></h1>
+      <p class="hero-tagline a3">Adobe · Creative Cloud · Millions of Users</p>
+      <p class="hero-desc a4">
+        Building enterprise-scale production systems that power creative work for millions worldwide.
+      </p>
+      <div class="hero-ctas a5">
+        <a href="#projects" class="cta-fill">View Projects</a>
+        <a href="#contact" class="cta-ghost">Get in Touch <i class="fas fa-chevron-right"></i></a>
       </div>
-      <div class="s1-quarter s1-section">
-        <span class="s1-xlarge">2022</span><br>
-        Research Intern at National Chung Cheng University Taiwan
-      </div>
-      <div class="s1-quarter s1-section">
-        <span class="s1-xlarge">2021</span><br>
-        Product Intern at Adobe India
-      </div>
-      <div class="s1-quarter s1-section">
-        <span class="s1-xlarge">2019</span><br>
-        ERASMUS+ semester exchange at Croatia
+      <div class="hero-socials a6">
+        <a href="https://www.linkedin.com/in/saumya-shrivastava-0996b6179/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/smy14r" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://medium.com/@saumya14s" target="_blank" rel="noopener noreferrer" aria-label="Medium"><i class="fab fa-medium-m"></i></a>
       </div>
     </div>
-    
-    <!-- Grid for pricing tables -->
-    <h3 class="s1-padding-16 s1-text-light-grey">My Projects</h3>
-    <div class="s1-row-padding" style="margin:0 -16px">
-      <div class="s1-third s1-margin-bottom">
-        <ul class="s1-ul s1-white s1-center s1-opacity s1-hover-opacity-off">
-          <li class="s1-dark-grey s1-xlarge s1-padding-32">Backend & Microservices</li>
-          <li class="s1-padding-32">Java, Spring Boot</li>
-          <li class="s1-padding-32">SQL Server, MongoDB</li>
-          <li class="s1-padding-16">
-            <h2>4</h2>
-            <span class="s1-opacity">projects</span>
-          </li>
-          <li class="s1-light-grey s1-padding-24">
-            <button class="s1-button s1-white s1-padding-large s1-hover-black">
-                <a href="https://github.com/smy14r?tab=repositories" target="_blank">
-                    Details</a>
-            </button>
-          </li>
-        </ul>
-      </div>
+    <div class="hero-scroll">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    </div>
+  </section>
 
-      <div class="s1-third s1-margin-bottom">
-        <ul class="s1-ul s1-white s1-center s1-opacity s1-hover-opacity-off">
-          <li class="s1-dark-grey s1-xlarge s1-padding-32">Full-Stack Development</li>
-          <li class="s1-padding-32">ReactJS, Node.js</li>
-          <li class="s1-padding-32">HTML, CSS, JavaScript</li>
-          <li class="s1-padding-16">
-            <h2>4</h2>
-            <span class="s1-opacity">projects</span>
-          </li>
-          <li class="s1-light-grey s1-padding-24">
-            <button class="s1-button s1-white s1-padding-large s1-hover-black">
-                <a href="https://github.com/smy14r?tab=repositories" target="_blank">
-                    Details</a>
-            </button>
-          </li>
-        </ul>
+  <!-- ── Stats Banner ── -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat reveal">
+        <span class="stat-num" data-target="3.5" data-decimals="1">0<span class="stat-plus">+</span></span>
+        <span class="stat-label">Years at Adobe</span>
       </div>
-
-      <div class="s1-third s1-margin-bottom">
-        <ul class="s1-ul s1-white s1-center s1-opacity s1-hover-opacity-off">
-          <li class="s1-dark-grey s1-xlarge s1-padding-32">Artificial Intelligence & Machine Learning</li>
-          <li class="s1-padding-32">Python</li>
-          <li class="s1-padding-32">Deep Learning Frameworks</li>
-          <li class="s1-padding-16">
-            <h2>2</h2>
-            <span class="s1-opacity">projects</span>
-          </li>
-          <li class="s1-light-grey s1-padding-24">
-            <button class="s1-button s1-white s1-padding-large s1-hover-black">
-                <a href="https://github.com/smy14r?tab=repositories" target="_blank">
-                    Details</a>
-            </button>
-          </li>
-        </ul>
+      <div class="stat-divider"></div>
+      <div class="stat reveal">
+        <span class="stat-num" data-target="9.83" data-decimals="2">0</span>
+        <span class="stat-label">CGPA · B.E. CS</span>
       </div>
-    <!-- End Grid/Pricing tables -->
+      <div class="stat-divider"></div>
+      <div class="stat reveal">
+        <span class="stat-num" data-target="8">0<span class="stat-plus">+</span></span>
+        <span class="stat-label">Projects Built</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat reveal">
+        <span class="stat-num" data-target="1">0</span>
+        <span class="stat-label">Research Publication</span>
+      </div>
     </div>
   </div>
-  
-  <!-- Portfolio Section -->
-  <div class="s1-padding-64 s1-content" id="project">
-    <h2 class="s1-text-light-grey">My Projects</h2>
-    <hr style="width:200px" class="s1-opacity">
 
-    <!-- Grid for photos -->
-    <div class="s1-row-padding" style="margin:0 -16px">
-        <div class="s1-row-padding s1-padding-16">
-            <div class="s1-half s1-margin-bottom">
-              <div class="s1-container s1-white" style="padding: 32px;">
-                <h3>Journal Application</h3>
-                <h6 class="s1-opacity">Spring Boot, MongoDB, REST API</h6>
-                <p>Full-stack CRUD application built with Spring Boot backend and MongoDB database. Features RESTful API endpoints for creating, reading, updating, and deleting journal entries with robust data management.</p>
-                <button class="s1-button s1-block s1-black s1-margin-bottom">
-                    <a href="https://github.com/smy14r/JournalApp" target="_blank">View on GitHub</a>
-                </button>
-              </div>
+  <!-- ── Journey Graph ── -->
+  <section class="section section-alt" id="experience">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Career</p>
+        <h2 class="section-title">My Journey</h2>
+      </div>
+      <div class="journey-wrap reveal" id="journeyWrapper">
+        <svg class="journey-svg" viewBox="0 0 1000 390" preserveAspectRatio="xMidYMid meet"
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <defs>
+            <linearGradient id="jPathGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%"   stop-color="#0071e3"/>
+              <stop offset="50%"  stop-color="#a855f7"/>
+              <stop offset="100%" stop-color="#30d158"/>
+            </linearGradient>
+            <filter id="jGlow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="jSoftGlow" x="-100%" y="-100%" width="300%" height="300%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="18"/>
+            </filter>
+          </defs>
+          <g opacity="0.35">
+            <circle cx="90"  cy="65"  r="1.5" fill="#636366"/><circle cx="165" cy="310" r="1"   fill="#48484a"/>
+            <circle cx="310" cy="48"  r="2"   fill="#636366"/><circle cx="355" cy="345" r="1.5" fill="#48484a"/>
+            <circle cx="475" cy="55"  r="1"   fill="#636366"/><circle cx="505" cy="338" r="2"   fill="#48484a"/>
+            <circle cx="640" cy="42"  r="1.5" fill="#636366"/><circle cx="672" cy="330" r="1"   fill="#48484a"/>
+            <circle cx="835" cy="52"  r="1.5" fill="#0071e3"/><circle cx="875" cy="315" r="1.5" fill="#636366"/>
+            <circle cx="118" cy="145" r="1"   fill="#48484a"/><circle cx="490" cy="178" r="1.5" fill="#636366"/>
+            <circle cx="700" cy="195" r="1"   fill="#48484a"/><circle cx="755" cy="358" r="1.5" fill="#636366"/>
+            <circle cx="280" cy="168" r="1"   fill="#636366"/><circle cx="620" cy="182" r="1"   fill="#48484a"/>
+          </g>
+          <path class="journey-glow-path"
+            d="M 50,190 C 100,190 170,260 230,260 C 290,260 360,120 410,120 C 460,120 540,260 590,260 C 640,260 710,120 770,120 C 820,120 900,190 950,190"
+            fill="none" stroke="url(#jPathGrad)" stroke-width="24" opacity="0.1" filter="url(#jSoftGlow)"/>
+          <path class="journey-main-path" id="jMainPath"
+            d="M 50,190 C 100,190 170,260 230,260 C 290,260 360,120 410,120 C 460,120 540,260 590,260 C 640,260 710,120 770,120 C 820,120 900,190 950,190"
+            fill="none" stroke="url(#jPathGrad)" stroke-width="2" stroke-linecap="round"/>
+          <circle r="5" fill="#30d158" filter="url(#jGlow)">
+            <animateMotion dur="5s" repeatCount="indefinite" begin="2.8s" calcMode="linear">
+              <mpath xlink:href="#jMainPath"/>
+            </animateMotion>
+          </circle>
+          <circle cx="50" cy="190" r="6" fill="#0071e3" filter="url(#jGlow)" class="j-start"/>
+          <text x="50" y="212" text-anchor="middle" class="j-edge-year">2018</text>
+          <text x="50" y="226" text-anchor="middle" class="j-edge-sub">B.E. Start</text>
+          <g class="j-milestone" style="--j-delay:0.4s">
+            <circle cx="230" cy="260" r="22" fill="none" stroke="#0071e3" stroke-width="1"   class="j-pulse-2"/>
+            <circle cx="230" cy="260" r="14" fill="none" stroke="#0071e3" stroke-width="1.5" class="j-pulse-1"/>
+            <circle cx="230" cy="260" r="8"  fill="#0071e3" filter="url(#jGlow)" class="j-dot"/>
+            <line x1="230" y1="272" x2="230" y2="305" stroke="#0071e3" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.6"/>
+            <g transform="translate(230,307)">
+              <rect x="-76" y="0" width="152" height="54" rx="10" fill="rgba(0,113,227,0.1)" stroke="rgba(0,113,227,0.35)" stroke-width="1"/>
+              <text x="0" y="18" text-anchor="middle" class="j-card-year">2019</text>
+              <text x="0" y="33" text-anchor="middle" class="j-card-role">ERASMUS+ Exchange</text>
+              <text x="0" y="47" text-anchor="middle" class="j-card-co">Zagreb, Croatia</text>
+            </g>
+          </g>
+          <g class="j-milestone" style="--j-delay:0.8s">
+            <circle cx="410" cy="120" r="22" fill="none" stroke="#a855f7" stroke-width="1"   class="j-pulse-2"/>
+            <circle cx="410" cy="120" r="14" fill="none" stroke="#a855f7" stroke-width="1.5" class="j-pulse-1"/>
+            <circle cx="410" cy="120" r="8"  fill="#a855f7" filter="url(#jGlow)" class="j-dot"/>
+            <line x1="410" y1="108" x2="410" y2="76" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.6"/>
+            <g transform="translate(410,22)">
+              <rect x="-76" y="0" width="152" height="54" rx="10" fill="rgba(168,85,247,0.1)" stroke="rgba(168,85,247,0.35)" stroke-width="1"/>
+              <text x="0" y="18" text-anchor="middle" class="j-card-year">2021</text>
+              <text x="0" y="33" text-anchor="middle" class="j-card-role">Product Intern</text>
+              <text x="0" y="47" text-anchor="middle" class="j-card-co">Adobe India</text>
+            </g>
+          </g>
+          <g class="j-milestone" style="--j-delay:1.2s">
+            <circle cx="590" cy="260" r="22" fill="none" stroke="#a855f7" stroke-width="1"   class="j-pulse-2"/>
+            <circle cx="590" cy="260" r="14" fill="none" stroke="#a855f7" stroke-width="1.5" class="j-pulse-1"/>
+            <circle cx="590" cy="260" r="8"  fill="#a855f7" filter="url(#jGlow)" class="j-dot"/>
+            <line x1="590" y1="272" x2="590" y2="305" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.6"/>
+            <g transform="translate(590,307)">
+              <rect x="-76" y="0" width="152" height="54" rx="10" fill="rgba(168,85,247,0.1)" stroke="rgba(168,85,247,0.35)" stroke-width="1"/>
+              <text x="0" y="18" text-anchor="middle" class="j-card-year">2022</text>
+              <text x="0" y="33" text-anchor="middle" class="j-card-role">Research Intern</text>
+              <text x="0" y="47" text-anchor="middle" class="j-card-co">Taiwan University</text>
+            </g>
+          </g>
+          <g class="j-milestone" style="--j-delay:1.6s">
+            <circle cx="770" cy="120" r="30" fill="none" stroke="#30d158" stroke-width="1"   class="j-pulse-3"/>
+            <circle cx="770" cy="120" r="22" fill="none" stroke="#30d158" stroke-width="1"   class="j-pulse-2"/>
+            <circle cx="770" cy="120" r="14" fill="none" stroke="#30d158" stroke-width="1.5" class="j-pulse-1"/>
+            <circle cx="770" cy="120" r="8"  fill="#30d158" filter="url(#jGlow)" class="j-dot"/>
+            <line x1="770" y1="108" x2="770" y2="76" stroke="#30d158" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.6"/>
+            <g transform="translate(770,22)">
+              <rect x="-84" y="0" width="168" height="54" rx="10" fill="rgba(48,209,88,0.08)" stroke="rgba(48,209,88,0.45)" stroke-width="1.5"/>
+              <text x="0" y="18" text-anchor="middle" class="j-card-year j-card-now">2022 — Present</text>
+              <text x="0" y="33" text-anchor="middle" class="j-card-role">Software Dev Engineer</text>
+              <text x="0" y="47" text-anchor="middle" class="j-card-co">Adobe Systems</text>
+            </g>
+          </g>
+          <circle cx="950" cy="190" r="8" fill="#30d158" filter="url(#jGlow)" class="j-end"/>
+          <text x="950" y="212" text-anchor="middle" class="j-edge-year j-now">Present</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About ── -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">About Me</p>
+        <h2 class="section-title">Crafting software<br>that scales.</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-copy reveal">
+          <p>
+            I'm a Software Development Engineer at <strong>Adobe Systems, Noida</strong>, building enterprise-scale
+            production systems since June 2022. I specialize in full-stack development and microservices
+            architecture, working on Adobe Creative Cloud products serving millions of users worldwide.
+          </p>
+          <p>
+            I graduated with a B.E. in Computer Science from <strong>Chitkara University</strong> with a CGPA of 9.83/10.
+            My journey includes an ERASMUS+ semester exchange at <strong>Algebra University, Zagreb</strong>
+            and a research internship at <strong>National Chung Cheng University, Taiwan</strong> focused on AI fairness.
+          </p>
+          <p>
+            Beyond engineering — international FIDE-rated chess player, published researcher, and Japanese language learner.
+          </p>
+          <div class="about-chips">
+            <span>Full-Stack</span><span>Microservices</span><span>AI/ML</span><span>Chess</span><span>Research</span>
+          </div>
+        </div>
+        <div class="skills-card reveal">
+          <h3>Technical Skills</h3>
+          <div class="skill">
+            <div class="skill-top"><span>Java · Python</span><span>95%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="95"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-top"><span>Spring Boot · Microservices · REST</span><span>90%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="90"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-top"><span>ReactJS · HTML · CSS · JavaScript</span><span>85%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-top"><span>SQL Server · MongoDB</span><span>85%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-top"><span>AI &amp; Machine Learning</span><span>80%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="80"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-top"><span>Jenkins · SonarQube · Git</span><span>85%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Experience Detail ── -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Timeline</p>
+        <h2 class="section-title">Experience</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item reveal">
+          <div class="tl-left">
+            <span class="tl-date">2022 — Present</span>
+            <span class="tl-badge">Current</span>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>Software Development Engineer</h3>
+            <p class="tl-co">Adobe Systems, Noida</p>
+            <p class="tl-desc">Building enterprise-scale production systems for Adobe Creative Cloud. Microservices architecture, REST APIs, and full-stack features serving millions worldwide.</p>
+            <div class="tl-tech"><span>Java</span><span>Spring Boot</span><span>ReactJS</span><span>MongoDB</span></div>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-left"><span class="tl-date">2022</span></div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>Research Intern</h3>
+            <p class="tl-co">National Chung Cheng University, Taiwan</p>
+            <p class="tl-desc">Research on AI fairness and explainability, resulting in a published paper in the International Journal of Information Technology.</p>
+            <div class="tl-tech"><span>Python</span><span>AI/ML</span><span>Research</span></div>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-left"><span class="tl-date">2021</span></div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>Product Intern</h3>
+            <p class="tl-co">Adobe India</p>
+            <p class="tl-desc">Contributed to Adobe product development, gaining hands-on experience with enterprise software engineering practices.</p>
+            <div class="tl-tech"><span>Java</span><span>Full-Stack</span></div>
+          </div>
+        </div>
+        <div class="tl-item reveal">
+          <div class="tl-left"><span class="tl-date">2019</span></div>
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <h3>ERASMUS+ Exchange Student</h3>
+            <p class="tl-co">Algebra University, Zagreb, Croatia</p>
+            <p class="tl-desc">Semester exchange under the European ERASMUS+ initiative, gaining international academic and cultural exposure.</p>
+            <div class="tl-tech"><span>International</span><span>Academic</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Projects ── -->
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Work</p>
+        <h2 class="section-title">Projects</h2>
+      </div>
+
+      <div class="proj-grid">
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <div class="proj-icon-wrap"><i class="fas fa-book-open"></i></div>
+            <a href="https://github.com/smy14r/JournalApp" target="_blank" rel="noopener noreferrer" class="proj-gh" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+          <h3>Journal Application</h3>
+          <p>Spring Boot backend CRUD app with MongoDB. RESTful API endpoints for creating, reading, updating, and deleting journal entries with end-to-end encryption.</p>
+          <div class="proj-tech"><span>Java</span><span>Spring Boot</span><span>MongoDB</span><span>REST API</span></div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <div class="proj-icon-wrap"><i class="fas fa-comments"></i></div>
+            <a href="https://github.com/smy14r/Chit-Chat-Application" target="_blank" rel="noopener noreferrer" class="proj-gh" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+          <h3>Chit Chat Application</h3>
+          <p>Real-time chat application with Node.js and Express backend. Socket.io powers WebSocket-based bidirectional communication between users.</p>
+          <div class="proj-tech"><span>Node.js</span><span>Express</span><span>Socket.io</span></div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <div class="proj-icon-wrap"><i class="fas fa-box-open"></i></div>
+            <a href="https://github.com/smy14r/Product-Management-System" target="_blank" rel="noopener noreferrer" class="proj-gh" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+          <h3>Product Management System</h3>
+          <p>RESTful web application built with Spring Boot for full CRUD operations on products — add, update, delete, and retrieve via clean API endpoints tested with Postman.</p>
+          <div class="proj-tech"><span>Java</span><span>Spring Boot</span><span>Maven</span><span>REST API</span></div>
+        </div>
+        <div class="proj-card reveal">
+          <div class="proj-top">
+            <div class="proj-icon-wrap"><i class="fas fa-wallet"></i></div>
+            <a href="https://github.com/smy14r/Expense-Tracker" target="_blank" rel="noopener noreferrer" class="proj-gh" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
+          <h3>Expense Tracker</h3>
+          <p>Full-stack MERN application to track income and expenses. React frontend with an Express + MongoDB backend, showing real-time balance, inflow, and outflow aggregates.</p>
+          <div class="proj-tech"><span>React</span><span>Node.js</span><span>Express</span><span>MongoDB</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Publications ── -->
+  <section class="section section-alt" id="publications">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Research</p>
+        <h2 class="section-title">Publications</h2>
+      </div>
+      <div class="pub-card reveal">
+        <div class="pub-icon-wrap"><i class="fas fa-file-alt"></i></div>
+        <div class="pub-body">
+          <div class="pub-meta">
+            <span class="pub-tag">IJIT · 2025</span>
+            <span class="pub-vol">Volume 11, Issue 3, Pages 13–23</span>
+          </div>
+          <h3>RelengDesk: An Enterprise Grade Release Engineering Monitoring and Analytics System</h3>
+          <p>Published research on enterprise-scale release engineering systems, monitoring, and analytics solutions for large-scale software development environments.</p>
+          <a href="https://www.ijitjournal.org/volume-11/issue-3/IJIT-V11I3P3.pdf" target="_blank" rel="noopener noreferrer" class="pub-cta">
+            <i class="fas fa-file-pdf"></i> Read Paper
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ── -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Say Hi</p>
+        <h2 class="section-title">Get In Touch</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="contact-lead">Open to conversations, collaboration, and connecting with fellow engineers and researchers.</p>
+          <div class="contact-rows">
+            <div class="contact-row">
+              <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div><strong>Location</strong><span>Noida, Uttar Pradesh, India</span></div>
             </div>
-            
-            <div class="s1-half s1-margin-bottom">
-              <div class="s1-container s1-white" style="padding: 32px;">
-                <h3>Chit Chat Application</h3>
-                <h6 class="s1-opacity">Node.js, Express, Socket.io</h6>
-                <p>Real-time chat application enabling instant messaging between users. Built with Node.js and Express backend, featuring Socket.io for WebSocket-based real-time bidirectional communication.</p>
-                <button class="s1-button s1-block s1-black s1-margin-bottom">
-                    <a href="https://github.com/smy14r/Chit-Chat-Application" target="_blank">View on GitHub</a>
-                </button>
-              </div>
+            <div class="contact-row">
+              <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+              <div><strong>Email</strong><a href="mailto:saumya14r@gmail.com" class="contact-link">saumya14r@gmail.com</a></div>
+            </div>
+            <div class="contact-row">
+              <div class="contact-icon"><i class="fas fa-phone"></i></div>
+              <div><strong>Phone</strong><a href="tel:+917415563789" class="contact-link">+91 7415563789</a></div>
             </div>
           </div>
-          
-          <div class="s1-row-padding s1-padding-16">
-            <div class="s1-half s1-margin-bottom">
-              <img src="./calender.jpg" alt="Calendar Screenshot" style="width:100%">
-              <div class="s1-container s1-white">
-                <h3>Dynamic Calendar 2021</h3>
-                <h6 class="s1-opacity">HTML, CSS, JavaScript</h6>
-                <p>Interactive calendar application with dynamic background changes based on the current month. Built with vanilla JavaScript for responsive date navigation and visual presentation.</p>
-                <button class="s1-button s1-block s1-black s1-margin-bottom">
-                    <a href="./calender.html" target="_blank">Browse</a>
-                </button>
-              </div>
-            </div>
-            
-            <div class="s1-half s1-margin-bottom">
-              <img src="./jsclock.jpg" alt="Digital Clock Screenshot" style="width:100%">
-              <div class="s1-container s1-white">
-                <h3>Digital Clock</h3>
-                <h6 class="s1-opacity">HTML, CSS, JavaScript</h6>
-                <p>Real-time digital clock displaying hours, minutes, and seconds synchronized with the user's local time zone. Features smooth time updates and modern UI design.</p>
-                <button class="s1-button s1-block s1-black s1-margin-bottom">
-                    <a href="./clock.html" target="_blank">Browse</a>
-                </button>
-              </div>
-            </div>
+          <div class="contact-social-row">
+            <a href="https://www.linkedin.com/in/saumya-shrivastava-0996b6179/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="https://github.com/smy14r" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://medium.com/@saumya14s" target="_blank" rel="noopener noreferrer"><i class="fab fa-medium-m"></i> Medium</a>
           </div>
-    <!-- End photo grid -->
+        </div>
+        <div class="contact-cta-card reveal">
+          <i class="fas fa-user-circle contact-avatar"></i>
+          <h3>Saumya Shrivastava</h3>
+          <p>Software Development Engineer</p>
+          <p class="contact-at-adobe">Adobe Systems</p>
+          <a href="mailto:saumya14r@gmail.com" class="cta-fill cta-block">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </a>
+        </div>
+      </div>
     </div>
-  <!-- End Portfolio Section -->
-  </div>
+  </section>
 
-  <!-- Publications Section -->
-  <div class="s1-padding-64 s1-content s1-text-grey" id="publications">
-    <h2 class="s1-text-light-grey">Publications</h2>
-    <hr style="width:200px" class="s1-opacity">
-    
-    <div class="s1-section">
-      <h4 class="s1-text-light-grey">RelengDesk: An Enterprise Grade Release Engineering Monitoring and Analytics System</h4>
-      <p class="s1-opacity">International Journal of Information Technology (IJIT), 2025</p>
-      <p>Volume 11, Issue 3, Pages 13-23</p>
-      <p class="s1-margin-top">Published research on enterprise-scale release engineering systems, monitoring, and analytics solutions for large-scale software development environments.</p>
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p>&copy; 2026 Saumya Shrivastava. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/saumya-shrivastava-0996b6179/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/smy14r" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://medium.com/@saumya14s" target="_blank" rel="noopener noreferrer" aria-label="Medium"><i class="fab fa-medium-m"></i></a>
+      </div>
     </div>
-  </div>
-
-  <!-- Contact Section -->
-  <div class="s1-padding-64 s1-content s1-text-grey" id="contact">
-    <h2 class="s1-text-light-grey">Contact Me</h2>
-    <hr style="width:200px" class="s1-opacity">
-
-    <div class="s1-section">
-      <p><i class="fa fa-map-marker fa-fw s1-text-white s1-xxlarge s1-margin-right"></i> Noida, Uttar Pradesh, India</p>
-      <p><i class="fa fa-phone fa-fw s1-text-white s1-xxlarge s1-margin-right"></i> Phone: +91 7415563789</p>
-      <p><i class="fa fa-envelope fa-fw s1-text-white s1-xxlarge s1-margin-right"> </i> Email: saumya14r@gmail.com</p>
-    </div><br>
-    <p>Let's get in touch. Send me a message!</p>
-  </div>
-  
-    <!-- Footer -->
-  <footer class="s1-content s1-padding-64 s1-text-grey s1-xlarge">
-    <a href="https://www.linkedin.com/in/saumya-shrivastava-0996b6179/" target="_blank">
-        <i class="fa fa-linkedin s1-hover-opacity"></i>
-    </a>
-    <a href="https://github.com/smy14r" target="_blank" class="s1-hover-opacity" style="margin-left: 16px;">
-        <i class="fa fa-github"></i>
-    </a>
-    <a href="https://medium.com/@saumya14s" target="_blank" class="s1-hover-opacity" style="margin-left: 16px;">
-        <i class="fa fa-medium"></i>
-    </a>
-    <p class="s1-medium">Saumya Shrivastava | <a href="https://github.com/smy14r?tab=repositories" target="_blank" class="s1-hover-text-green">View Projects</a></p>
-  <!-- End footer -->
   </footer>
 
-<!-- END PAGE CONTENT -->
-</div>
+  <script>
+    // ── Scroll progress bar ──
+    const progressBar = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+      progressBar.style.width = pct + '%';
+    }, { passive: true });
 
+    // ── Nav scroll ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('nav-scrolled', window.scrollY > 40), { passive: true });
+
+    // ── Burger ──
+    const burger = document.getElementById('burger');
+    const navMobile = document.getElementById('navMobile');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      navMobile.classList.toggle('open');
+    });
+    navMobile.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      navMobile.classList.remove('open');
+    }));
+
+    // ── Active nav link ──
+    const secs = document.querySelectorAll('section[id]');
+    const nls  = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let cur = '';
+      secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+      nls.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${cur}`));
+    }, { passive: true });
+
+    // ── Mouse parallax on hero mesh ──
+    const meshEls = [
+      { el: document.querySelector('.mesh-1'), f: 18 },
+      { el: document.querySelector('.mesh-2'), f: -13 },
+      { el: document.querySelector('.mesh-3'), f: 9 }
+    ];
+    let mx = 0, my = 0;
+    const cx = [0, 0, 0], cy = [0, 0, 0];
+    document.addEventListener('mousemove', e => {
+      mx = (e.clientX / window.innerWidth  - 0.5) * 2;
+      my = (e.clientY / window.innerHeight - 0.5) * 2;
+    });
+    (function meshLoop() {
+      meshEls.forEach(({ el, f }, i) => {
+        if (!el) return;
+        cx[i] += (mx * f - cx[i]) * 0.05;
+        cy[i] += (my * f - cy[i]) * 0.05;
+        el.style.transform = `translate(${cx[i]}px, ${cy[i]}px)`;
+      });
+      requestAnimationFrame(meshLoop);
+    })();
+
+    // ── 3D card tilt ──
+    document.querySelectorAll('.proj-card, .cat-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transition = 'transform 0.12s ease, box-shadow 0.3s, border-color 0.3s';
+      });
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / r.width  - 0.5) * 14;
+        const y = ((e.clientY - r.top)  / r.height - 0.5) * -14;
+        card.style.transform = `perspective(900px) rotateY(${x}deg) rotateX(${y}deg) translateY(-5px) scale(1.015)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform 0.7s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s, border-color 0.3s';
+        card.style.transform = '';
+      });
+    });
+
+    // ── Magnetic CTA buttons ──
+    document.querySelectorAll('.cta-fill, .cta-ghost').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / r.width  - 0.5) * 10;
+        const y = ((e.clientY - r.top)  / r.height - 0.5) * 10;
+        btn.style.transform = `translate(${x}px, ${y}px) scale(1.04)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+
+    // ── Journey animation ──
+    const jw = document.getElementById('journeyWrapper');
+    if (jw) {
+      new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animated'); });
+      }, { threshold: 0.2 }).observe(jw);
+    }
+
+    // ── Staggered scroll reveal ──
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('visible');
+        if (e.target.classList.contains('skills-card')) animateSkills();
+        // Stagger direct-child cards inside a revealed grid wrapper
+        e.target.querySelectorAll('.cat-card, .proj-card, .tl-item').forEach((child, i) => {
+          child.style.transitionDelay = `${i * 0.1}s`;
+          child.classList.add('visible');
+        });
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+    // ── Skill bars (cascade) ──
+    function animateSkills() {
+      document.querySelectorAll('.skill-fill').forEach((b, i) => {
+        setTimeout(() => { b.style.width = b.dataset.w + '%'; }, 120 + i * 90);
+      });
+    }
+
+    // ── Stat counters ──
+    function runCounter(numEl) {
+      const target   = parseFloat(numEl.dataset.target);
+      const decimals = parseInt(numEl.dataset.decimals || '0', 10);
+      const duration = 1800;
+      const start    = performance.now();
+      // first text node holds the number; child spans hold '+' etc.
+      const textNode = numEl.firstChild;
+      function tick(now) {
+        const p     = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 4);
+        const val   = eased * target;
+        textNode.nodeValue = decimals ? val.toFixed(decimals) : Math.floor(val);
+        if (p < 1) requestAnimationFrame(tick);
+        else textNode.nodeValue = decimals ? target.toFixed(decimals) : String(target);
+      }
+      requestAnimationFrame(tick);
+    }
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.querySelectorAll('.stat-num[data-target]').forEach(runCounter);
+      });
+    }, { threshold: 0.6 }).observe(document.querySelector('.stats-bar'));
+
+    // ── Smooth scroll ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) t.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
 </body>
 </html>
