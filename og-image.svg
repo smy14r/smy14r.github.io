@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#000000"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#bg-grad)"/>
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="20%" cy="40%" r="40%">
+      <stop offset="0%" stop-color="#0071e3" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0071e3" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="80%" cy="60%" r="40%">
+      <stop offset="0%" stop-color="#30d158" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#30d158" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Initials badge -->
+  <rect x="80" y="72" width="80" height="80" rx="20" fill="#1c1c1e" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+  <text x="120" y="128" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="36" fill="#f5f5f7">SS</text>
+
+  <!-- Name -->
+  <text x="80" y="250" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="72" fill="#f5f5f7" letter-spacing="-2">Saumya Shrivastava</text>
+
+  <!-- Role -->
+  <text x="80" y="320" font-family="system-ui,-apple-system,sans-serif" font-weight="400" font-size="36" fill="#0071e3">Software Development Engineer</text>
+
+  <!-- Company -->
+  <text x="80" y="375" font-family="system-ui,-apple-system,sans-serif" font-weight="300" font-size="30" fill="#a1a1a6">Adobe Systems · Creative Cloud</text>
+
+  <!-- Stats row -->
+  <text x="80"  y="490" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="28" fill="#f5f5f7">3.5+</text>
+  <text x="80"  y="520" font-family="system-ui,-apple-system,sans-serif" font-weight="300" font-size="18" fill="#6e6e73">Years at Adobe</text>
+
+  <text x="280" y="490" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="28" fill="#f5f5f7">9.83</text>
+  <text x="280" y="520" font-family="system-ui,-apple-system,sans-serif" font-weight="300" font-size="18" fill="#6e6e73">CGPA · B.E. CS</text>
+
+  <text x="480" y="490" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="28" fill="#f5f5f7">8+</text>
+  <text x="480" y="520" font-family="system-ui,-apple-system,sans-serif" font-weight="300" font-size="18" fill="#6e6e73">Projects Built</text>
+
+  <text x="640" y="490" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="28" fill="#f5f5f7">1</text>
+  <text x="640" y="520" font-family="system-ui,-apple-system,sans-serif" font-weight="300" font-size="18" fill="#6e6e73">Publication</text>
+
+  <!-- URL -->
+  <text x="1120" y="560" text-anchor="end" font-family="system-ui,-apple-system,sans-serif" font-weight="400" font-size="22" fill="#3a3a3c">smy14r.github.io</text>
+</svg>
