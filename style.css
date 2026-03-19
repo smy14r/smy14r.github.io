@@ -1300,3 +1300,26 @@ body.cursor-click .cursor-ring { width: 24px; height: 24px; border-color: var(--
   .page-loader, .split-line-inner, .ripple-wave,
   .cursor-dot, .cursor-ring { animation: none !important; transition: none !important; }
 }
+
+/* ══ TIMELINE PHOTO CARDS ══════════════════════════════ */
+.tl-card          { padding: 0; overflow: hidden; }
+.tl-img-wrap      { position: relative; height: 175px; overflow: hidden; }
+.tl-img           {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: brightness(0.55) saturate(0.65);
+  transition: transform 0.65s var(--ease), filter 0.4s;
+  display: block;
+}
+.tl-card:hover .tl-img {
+  transform: scale(1.07);
+  filter: brightness(0.68) saturate(0.85);
+}
+.tl-img-fade {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 90px;
+  background: linear-gradient(to bottom, transparent, var(--bg-card));
+  pointer-events: none;
+}
+.tl-body          { padding: 22px 32px 28px; }
