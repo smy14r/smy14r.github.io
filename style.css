@@ -1323,3 +1323,35 @@ body.cursor-click .cursor-ring { width: 24px; height: 24px; border-color: var(--
   pointer-events: none;
 }
 .tl-body          { padding: 22px 32px 28px; }
+
+/* ══ EXPERIENCE GRID (replaces narrow timeline) ══════════ */
+.tl-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.tl-card-wide {
+  grid-column: 1 / -1;
+}
+.tl-card-wide .tl-img-wrap { height: 260px; }
+
+.tl-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.tl-meta .tl-date {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tl-grid { grid-template-columns: 1fr; }
+  .tl-card-wide { grid-column: 1; }
+  .tl-card-wide .tl-img-wrap { height: 200px; }
+}
