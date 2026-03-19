@@ -117,6 +117,36 @@
     </div>
   </div>
 
+  <!-- ── Marquee Strip ── -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-inner">
+      <span>Java</span><span class="msep">◆</span>
+      <span>Spring Boot</span><span class="msep">◆</span>
+      <span>Microservices</span><span class="msep">◆</span>
+      <span>ReactJS</span><span class="msep">◆</span>
+      <span>Apache Kafka</span><span class="msep">◆</span>
+      <span>MongoDB</span><span class="msep">◆</span>
+      <span>REST APIs</span><span class="msep">◆</span>
+      <span>Python</span><span class="msep">◆</span>
+      <span>AI / ML</span><span class="msep">◆</span>
+      <span>CI / CD</span><span class="msep">◆</span>
+      <span>SonarQube</span><span class="msep">◆</span>
+      <span>Adobe Creative Cloud</span><span class="msep">◆</span>
+      <span>Java</span><span class="msep">◆</span>
+      <span>Spring Boot</span><span class="msep">◆</span>
+      <span>Microservices</span><span class="msep">◆</span>
+      <span>ReactJS</span><span class="msep">◆</span>
+      <span>Apache Kafka</span><span class="msep">◆</span>
+      <span>MongoDB</span><span class="msep">◆</span>
+      <span>REST APIs</span><span class="msep">◆</span>
+      <span>Python</span><span class="msep">◆</span>
+      <span>AI / ML</span><span class="msep">◆</span>
+      <span>CI / CD</span><span class="msep">◆</span>
+      <span>SonarQube</span><span class="msep">◆</span>
+      <span>Adobe Creative Cloud</span><span class="msep">◆</span>
+    </div>
+  </div>
+
   <!-- ── Journey Graph ── -->
   <section class="section section-alt" id="journey">
     <div class="container">
@@ -795,14 +825,36 @@
       document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; ring.style.opacity = '1'; });
     })();
 
-    // ── Split-text line reveal on section titles ──
+    // ── Character-by-character section title reveal ──
     (function() {
-      document.querySelectorAll('.section-title').forEach((el, ti) => {
+      document.querySelectorAll('.section-title').forEach(el => {
         const lines = el.innerHTML.split(/<br\s*\/?>/i);
-        el.innerHTML = lines.map((line, i) =>
-          `<span class="split-line"><span class="split-line-inner" style="transition-delay:${0.12 + i * 0.1}s">${line.trim()}</span></span>`
-        ).join('');
+        let globalIdx = 0;
+        el.innerHTML = lines.map((line, li) => {
+          const chars = Array.from(line.trim()).map(c => {
+            if (c === ' ') return '<span class="char-sp"> </span>';
+            const delay = (globalIdx++ * 0.028).toFixed(3);
+            return `<span class="tchar" style="transition-delay:${delay}s">${c}</span>`;
+          }).join('');
+          return `<span class="char-line">${chars}</span>`;
+        }).join('');
       });
+    })();
+
+    // ── Mouse spotlight ──
+    (function() {
+      const spot = document.createElement('div');
+      spot.className = 'page-spotlight';
+      document.body.prepend(spot);
+      let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+      let cx = mx, cy = my;
+      window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
+      (function tick() {
+        cx += (mx - cx) * 0.07;
+        cy += (my - cy) * 0.07;
+        spot.style.transform = `translate(${cx - 300}px, ${cy - 300}px)`;
+        requestAnimationFrame(tick);
+      })();
     })();
 
     // ── Button ripple on click ──
