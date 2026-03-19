@@ -1107,6 +1107,7 @@ body {
   background: linear-gradient(135deg, rgba(0,113,227,0.06), rgba(168,85,247,0.04));
   opacity: 0;
   transition: opacity 0.4s;
+  pointer-events: none;
 }
 .contact-cta-card:hover::after { opacity: 1; }
 
