@@ -654,6 +654,100 @@ strong { color: var(--text); font-weight: 600; }
   letter-spacing: 0.01em;
 }
 
+/* ══ EDUCATION CARDS ═════════════════════════ */
+.edu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.edu-card-wide { grid-column: 1 / -1; }
+
+/* Wide card: 2-column layout with large CGPA stat */
+.edu-wide-inner {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.edu-main { flex: 1; }
+.edu-stat {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 16px 32px;
+  border-left: 0.5px solid var(--border);
+}
+.edu-stat-num {
+  display: block;
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -3px;
+  background: linear-gradient(135deg, #f5f5f7 30%, var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.edu-stat-label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 6px;
+}
+
+/* Corner credential watermark for smaller cards */
+.edu-cred {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  text-align: right;
+  line-height: 1;
+}
+.edu-cred-num {
+  display: block;
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -2px;
+  background: linear-gradient(135deg, rgba(0,113,227,0.5), rgba(0,113,227,0.1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.edu-cred-purple .edu-cred-num {
+  background: linear-gradient(135deg, rgba(191,90,242,0.5), rgba(191,90,242,0.1));
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+.edu-cred-unit {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-3);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-top: 2px;
+}
+.edu-grade {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #30d158;
+  background: rgba(48,209,88,0.1);
+  border: 0.5px solid rgba(48,209,88,0.25);
+  padding: 2px 7px;
+  border-radius: 980px;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 860px) {
+  .edu-grid { grid-template-columns: 1fr; }
+  .edu-card-wide { grid-column: 1; }
+  .edu-wide-inner { flex-direction: column; gap: 24px; }
+  .edu-stat { border-left: none; border-top: 0.5px solid var(--border); padding: 16px 0 0; width: 100%; }
+  .edu-stat-num { font-size: 52px; }
+}
+
 /* ══ BEYOND ENGINEERING ══════════════════════ */
 .extras-grid {
   display: grid;
