@@ -429,6 +429,12 @@ strong { color: var(--text); font-weight: 600; }
 /* ══ ABOUT ═══════════════════════════════════ */
 .about-body {
   max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.about-body .about-chips,
+.about-body .about-tech {
+  justify-content: center;
 }
 .about-lead {
   font-size: 18px;
