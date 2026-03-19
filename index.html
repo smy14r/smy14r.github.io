@@ -853,6 +853,29 @@
       }, { passive: true });
     })();
 
+    // ── Experience scroll progress line ──
+    (function() {
+      const section = document.getElementById('experience');
+      if (!section) return;
+      const container = section.querySelector('.container');
+      container.style.position = 'relative';
+      const wrap = document.createElement('div');
+      wrap.className = 'exp-line-wrap';
+      wrap.innerHTML = '<div class="exp-line-fill"></div><div class="exp-line-dot"></div>';
+      container.insertBefore(wrap, container.firstChild);
+      const fill = wrap.querySelector('.exp-line-fill');
+      const dot  = wrap.querySelector('.exp-line-dot');
+      function updateLine() {
+        const rect     = section.getBoundingClientRect();
+        const progress = Math.max(0, Math.min(1, (-rect.top + window.innerHeight * 0.65) / section.offsetHeight));
+        const pct = progress * 100;
+        fill.style.height = pct + '%';
+        dot.style.top     = 'calc(' + pct + '% - 5px)';
+      }
+      window.addEventListener('scroll', updateLine, { passive: true });
+      updateLine();
+    })();
+
     // ── Extended 3D tilt — timeline cards + pub card ──
     document.querySelectorAll('.tl-card, .pub-card').forEach(card => {
       card.addEventListener('mouseenter', () => {
