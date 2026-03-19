@@ -329,39 +329,13 @@
         <p class="eyebrow">About Me</p>
         <h2 class="section-title">Crafting software<br>that scales.</h2>
       </div>
-      <div class="about-grid">
-        <div class="about-copy reveal">
-          <p>SDE at <strong>Adobe Systems</strong> — building Creative Cloud infrastructure since 2022. CGPA 9.83 · ERASMUS+ · AI research · FIDE chess.</p>
-          <div class="about-chips">
-            <span>Full-Stack</span><span>Microservices</span><span>AI/ML</span><span>Chess</span><span>Research</span>
-          </div>
+      <div class="about-body reveal">
+        <p class="about-lead">SDE at <strong>Adobe Systems</strong> — building Creative Cloud infrastructure since 2022. CGPA 9.83 · ERASMUS+ · AI research · FIDE chess.</p>
+        <div class="about-chips">
+          <span>Full-Stack</span><span>Microservices</span><span>AI / ML</span><span>Chess</span><span>Research</span>
         </div>
-        <div class="skills-card reveal">
-          <h3>Technical Skills</h3>
-          <div class="skill">
-            <div class="skill-top"><span>Java · Python</span><span>95%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="95"></div></div>
-          </div>
-          <div class="skill">
-            <div class="skill-top"><span>Spring Boot · Microservices · REST</span><span>90%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="90"></div></div>
-          </div>
-          <div class="skill">
-            <div class="skill-top"><span>ReactJS · HTML · CSS · JavaScript</span><span>85%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
-          </div>
-          <div class="skill">
-            <div class="skill-top"><span>SQL Server · MongoDB</span><span>85%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
-          </div>
-          <div class="skill">
-            <div class="skill-top"><span>AI &amp; Machine Learning</span><span>80%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="80"></div></div>
-          </div>
-          <div class="skill">
-            <div class="skill-top"><span>Jenkins · SonarQube · Git</span><span>85%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-w="85"></div></div>
-          </div>
+        <div class="about-tech">
+          <span>Java</span><span>Spring Boot</span><span>ReactJS</span><span>MongoDB</span><span>Apache Kafka</span><span>Python</span><span>REST APIs</span><span>SonarQube</span><span>Docker</span><span>Git</span>
         </div>
       </div>
     </div>
@@ -818,7 +792,7 @@
         let globalIdx = 0;
         el.innerHTML = lines.map((line, li) => {
           const chars = Array.from(line.trim()).map(c => {
-            if (c === ' ') return '<span class="char-sp"> </span>';
+            if (c === ' ') return '<span class="char-sp">&nbsp;</span>';
             const delay = (globalIdx++ * 0.028).toFixed(3);
             return `<span class="tchar" style="transition-delay:${delay}s">${c}</span>`;
           }).join('');

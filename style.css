@@ -427,16 +427,36 @@ strong { color: var(--text); font-weight: 600; }
 }
 
 /* ══ ABOUT ═══════════════════════════════════ */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: start;
+.about-body {
+  max-width: 680px;
 }
-.about-copy p {
+.about-lead {
+  font-size: 18px;
   color: var(--text-2);
-  margin-bottom: 18px;
-  font-size: 17px;
+  line-height: 1.72;
+  margin-bottom: 28px;
+}
+.about-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+.about-tech span {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 13px;
+  border-radius: 980px;
+  background: rgba(0,113,227,0.07);
+  border: 0.5px solid rgba(0,113,227,0.2);
+  color: #4fa8ff;
+  letter-spacing: 0.01em;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+.about-tech span:hover {
+  background: rgba(0,113,227,0.15);
+  border-color: rgba(0,113,227,0.4);
+  transform: translateY(-2px);
 }
 .about-chips {
   display: flex;
@@ -1530,7 +1550,7 @@ body.cursor-click .cursor-ring { width: 24px; height: 24px; border-color: var(--
 
 /* ── Character-by-character title reveal ── */
 .char-line { display: block; }
-.char-sp   { display: inline-block; width: 0.28em; }
+.char-sp   { display: inline; white-space: pre; }
 .tchar {
   display: inline-block;
   opacity: 0;
