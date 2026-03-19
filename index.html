@@ -605,6 +605,129 @@
         if (t) t.scrollIntoView({ behavior: 'smooth' });
       });
     });
+
+    // ══════════════════════════════════════
+    // PREMIUM TRANSITIONS
+    // ══════════════════════════════════════
+
+    // ── Page Loader ──
+    (function() {
+      const loader = document.createElement('div');
+      loader.className = 'page-loader';
+      loader.innerHTML = `
+        <div class="loader-monogram" id="loaderMono">SS</div>
+        <div class="loader-progress"><div class="loader-progress-bar" id="loaderBar"></div></div>`;
+      document.body.prepend(loader);
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(() => {
+        setTimeout(() => document.getElementById('loaderMono').classList.add('show'), 80);
+        setTimeout(() => document.getElementById('loaderBar').classList.add('go'), 200);
+        setTimeout(() => { loader.classList.add('exit'); document.body.style.overflow = ''; }, 1300);
+        setTimeout(() => loader.remove(), 2500);
+      });
+    })();
+
+    // ── Custom Cursor ──
+    (function() {
+      if (!window.matchMedia('(pointer: fine)').matches) return;
+      const dot  = document.createElement('div'); dot.className  = 'cursor-dot';
+      const ring = document.createElement('div'); ring.className = 'cursor-ring';
+      document.body.append(dot, ring);
+      let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my;
+      document.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+      });
+      (function loop() {
+        rx += (mx - rx) * 0.13; ry += (my - ry) * 0.13;
+        ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+        requestAnimationFrame(loop);
+      })();
+      document.querySelectorAll('a, button, .proj-card, .tl-card, .pub-card, .skills-card').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+      });
+      document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
+      document.addEventListener('mouseup',   () => document.body.classList.remove('cursor-click'));
+      document.addEventListener('mouseleave', () => { dot.style.opacity = '0'; ring.style.opacity = '0'; });
+      document.addEventListener('mouseenter', () => { dot.style.opacity = '1'; ring.style.opacity = '1'; });
+    })();
+
+    // ── Split-text line reveal on section titles ──
+    (function() {
+      document.querySelectorAll('.section-title').forEach((el, ti) => {
+        const lines = el.innerHTML.split(/<br\s*\/?>/i);
+        el.innerHTML = lines.map((line, i) =>
+          `<span class="split-line"><span class="split-line-inner" style="transition-delay:${0.12 + i * 0.1}s">${line.trim()}</span></span>`
+        ).join('');
+      });
+    })();
+
+    // ── Button ripple on click ──
+    (function() {
+      document.querySelectorAll('.cta-fill, .cta-ghost').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const r = btn.getBoundingClientRect();
+          const size = Math.max(r.width, r.height) * 2;
+          const rpl = document.createElement('span');
+          rpl.className = 'ripple-wave';
+          rpl.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - r.left - size / 2}px;top:${e.clientY - r.top - size / 2}px`;
+          btn.appendChild(rpl);
+          setTimeout(() => rpl.remove(), 700);
+        });
+      });
+    })();
+
+    // ── Text scramble on hero accent name ──
+    (function() {
+      const el = document.querySelector('.name-accent');
+      if (!el) return;
+      const final = el.textContent;
+      const pool  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#@!%&';
+      let frame = 0; const total = 48;
+      function run() {
+        if (frame > total) { el.textContent = final; return; }
+        const progress = frame / total;
+        el.textContent = Array.from(final).map((ch, i) =>
+          ch === ' ' ? ' ' : i < Math.floor(progress * final.length)
+            ? ch : pool[Math.floor(Math.random() * pool.length)]
+        ).join('');
+        frame++;
+        setTimeout(run, 28);
+      }
+      setTimeout(run, 1600);
+    })();
+
+    // ── Hero body parallax on scroll ──
+    (function() {
+      const hb = document.querySelector('.hero-body');
+      if (!hb) return;
+      window.addEventListener('scroll', () => {
+        const s = window.scrollY;
+        if (s < window.innerHeight) {
+          hb.style.transform = `translateY(${s * 0.28}px)`;
+          hb.style.opacity   = String(1 - s / (window.innerHeight * 0.85));
+        }
+      }, { passive: true });
+    })();
+
+    // ── Extended 3D tilt — timeline cards + pub card ──
+    document.querySelectorAll('.tl-card, .pub-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transition = 'transform 0.12s ease, box-shadow 0.3s, border-color 0.3s';
+      });
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / r.width  - 0.5) * 8;
+        const y = ((e.clientY - r.top)  / r.height - 0.5) * -8;
+        card.style.transform = `perspective(1000px) rotateY(${x}deg) rotateX(${y}deg) translateY(-4px) scale(1.01)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform 0.7s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s, border-color 0.3s';
+        card.style.transform = '';
+      });
+    });
+
   </script>
 </body>
 </html>
