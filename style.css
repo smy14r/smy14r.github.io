@@ -822,9 +822,9 @@ strong { color: var(--text); font-weight: 600; }
 .extra-jlpt {
   font-size: 11px;
   font-weight: 700;
-  color: #ff375f;
-  background: rgba(255,55,95,0.1);
-  border: 0.5px solid rgba(255,55,95,0.3);
+  color: #ff9f0a;
+  background: rgba(255,159,10,0.1);
+  border: 0.5px solid rgba(255,159,10,0.3);
   padding: 2px 9px;
   border-radius: 980px;
   letter-spacing: 0.06em;
@@ -1596,4 +1596,76 @@ body.cursor-click .cursor-ring { width: 24px; height: 24px; border-color: var(--
 @media (max-width: 768px) {
   .tl-grid { grid-template-columns: 1fr; }
   .tl-card-wide { grid-column: 1; }
+}
+
+/* ══ EXPERIENCE TRANSITIONS ══════════════════ */
+
+/* 1 — Accent line draws left→right on scroll */
+.tl-card::before {
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.75s var(--ease-out);
+}
+.tl-card.visible::before { transform: scaleX(1); }
+
+/* 2 — Staggered card entrance */
+#experience .tl-grid .tl-card.reveal:nth-child(1) { transition-delay: 0ms; }
+#experience .tl-grid .tl-card.reveal:nth-child(2) { transition-delay: 120ms; }
+#experience .tl-grid .tl-card.reveal:nth-child(3) { transition-delay: 220ms; }
+#experience .tl-grid .tl-card.reveal:nth-child(4) { transition-delay: 100ms; }
+
+/* 3 — Tagline fades in slightly after card */
+.tl-card .tl-tagline {
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.5s var(--ease-out) 0.25s, transform 0.5s var(--ease-out) 0.25s;
+}
+.tl-card.visible .tl-tagline { opacity: 1; transform: translateY(0); }
+
+/* 4 — Icon: spring bounce + color glow on hover */
+.tl-icon {
+  transition: transform 0.35s var(--spring), box-shadow 0.3s, background 0.3s;
+}
+.tl-card:hover .tl-icon {
+  transform: scale(1.15) rotate(-8deg);
+  box-shadow: 0 6px 22px rgba(0,113,227,0.35);
+  background: rgba(0,113,227,0.18);
+}
+.tl-card:hover .tl-icon.tl-icon-green {
+  box-shadow: 0 6px 22px rgba(48,209,88,0.3);
+  background: rgba(48,209,88,0.18);
+}
+.tl-card:hover .tl-icon.tl-icon-purple {
+  box-shadow: 0 6px 22px rgba(191,90,242,0.3);
+  background: rgba(191,90,242,0.18);
+}
+
+/* 5 — Shimmer sweep across card on hover */
+.tl-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.04) 50%, transparent 70%);
+  transition: left 0.7s ease;
+  pointer-events: none;
+}
+.tl-card:hover::after { left: 140%; }
+
+/* 6 — Tech pill lift on hover */
+.tl-tech span {
+  transition: transform 0.2s var(--spring), background 0.2s, border-color 0.2s;
+}
+.tl-tech span:hover {
+  transform: translateY(-2px);
+  background: rgba(0,113,227,0.18);
+  border-color: rgba(0,113,227,0.45);
+}
+
+/* 7 — Enhanced card hover glow */
+.tl-card:hover {
+  border-color: rgba(0,113,227,0.18);
+  box-shadow: 0 12px 48px rgba(0,0,0,0.45), 0 0 0 1px rgba(0,113,227,0.07);
+  transform: translateY(-3px);
 }
